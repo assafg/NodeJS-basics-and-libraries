@@ -217,7 +217,7 @@ footer {
 }
 
 .slide-content img {
-    max-height: 500px;
+    max-height: 90%;
     margin-left: auto;
     margin-right: auto;
 }
