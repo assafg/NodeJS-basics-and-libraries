@@ -2,7 +2,4 @@
 
 ----
 
-# NodeJS 101
-
-#### NodeJS basics
-
+# JS Basics
