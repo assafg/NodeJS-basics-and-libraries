@@ -60,7 +60,7 @@ npm init
 
 --------
 
-## Ex1: Create File Script
+## Ex1: Create prime numbers file
 
 Lets wrte a script that writes prime numbers between 2 and 100 to a file node's `fs` library
 
