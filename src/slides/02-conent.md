@@ -215,6 +215,7 @@ server.listen(() => {
 ## Exercise
 
 Write a CLI that:
+
 1. Fetches a remote file from a URI
 2. Encripts it's content
 3. Saves the encripted file to the disk
