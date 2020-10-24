@@ -1,0 +1,21 @@
+{
+  "name": "bull-mq-file-handler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./out/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./out && tsc",
+    "start": "npm run build && nodemon ./out/index.js"
+  },
+  "author": "Assaf Gannon",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/lodash": "^4.14.162",
+    "@types/node": "^14.14.2",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "bullmq": "^1.10.0"
+  }
+}

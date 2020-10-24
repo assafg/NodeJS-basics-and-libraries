@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  redis:
+    hostname: redis
+    image: 'redis:alpine'
+    command: redis-server
+    ports:
+      - '6380:6379'
+    volumes:
+      - $PWD/.data/redis:/var/lib/redis
+      # - $PWD/redis.conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_REPLICATION_MODE=master
