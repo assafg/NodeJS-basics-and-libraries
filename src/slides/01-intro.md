@@ -2,7 +2,7 @@
 
 ----
 
-# NodeJS 101
+# NodeJS
 
-#### NodeJS basics
+#### Working with databases
 
