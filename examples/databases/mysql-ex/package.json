@@ -1,0 +1,23 @@
+{
+  "name": "mysql-ex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./out && tsc",
+    "start": "node out/redis-dao.js"
+  },
+  "keywords": [],
+  "author": "Assaf Gannon",
+  "license": "ISC",
+  "dependencies": {
+    "line-reader": "^0.4.0",
+    "mysql": "^2.18.1",
+    "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/mysql": "^2.15.15",
+    "@types/redis": "^2.8.28"
+  }
+}
