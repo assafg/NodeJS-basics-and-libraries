@@ -208,3 +208,108 @@ app.get('/example/b', function (req, res, next) {
 `res.sendStatus()`|Set the response status code and send its string representation as the response body.
 
 ------
+
+## Excersise 1
+
+- Create an express server
+- Add routes for RESTful management of "item"
+  - use "Inmemmory" storage
+
+
+-------
+
+## Excersise 2
+
+- Seperate the service to different files:
+  - `index.ts`, `controller.ts` and `service.ts`
+
+-------
+
+## Excersise 3
+
+- Replace the "Inmemmory" storage with mongodb
+  - make sure to pass the `monogo uri` as an environmnet variable
+
+------
+
+## Docerizing the service
+
+Dockerfile
+
+```yaml
+FROM node:15.2.0-alpine3.10
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
+
+RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
+
+# Bundle app source
+COPY . .
+
+EXPOSE 8080
+CMD [ "node", "index.js" ]
+```
+
+------
+
+## .dockeringore
+
+```yaml
+node_modules
+npm-debug.log
+```
+
+------
+
+## Building and running
+
+```sh
+docker build -t <your username>/<service-name> .
+
+docker run -p 49160:8080 -d <your username>/<service-name>
+
+```
+
+for further reading see [Docker and Node.js Best Practices](https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md)
+
+------
+
+## Excersise 4
+
+- Add your service to a docker-compose with the mongodb
+
+
+-----
+
+# Final Project
+
+Write a system that collects and displays location check-ins
+
+- Service1
+  - Accepts a geo-location as post requests (latitude, longitude) and userId, and timestamp
+  - creates a BullMQ job
+
+- Service2 
+  - Processes jobs from the BullMQ:
+    - enriches the data with address information (https://locationiq.com/geocoding, https://developers.google.com/maps/documentation/geocoding/start)
+    - Create another BullMQ job (different queue)
+
+- Service3
+  - Process the enriched data from Service2
+    - Store in a mongoDB
+
+- Service4
+  - Expose the data with a web service
+  - Allow to see locations by:
+    - userId
+    - userId and time frame
+    - Most popular locations
+    - show users in proximaty (accept a userId and show all users within a X km radius) - use last location per user
