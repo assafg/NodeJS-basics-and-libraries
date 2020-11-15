@@ -142,10 +142,10 @@ router.use(function timeLog (req, res, next) {
   next()
 })
 // define the home page route
-app.get('/', getHandler);
-app.post('/', postHandler);
-app.put('/', putHandler);
-app.delete('/', deleteHandler);
+router.get('/', getHandler);
+router.post('/', postHandler);
+router.put('/', putHandler);
+router.delete('/', deleteHandler);
 
 // ----
 // in in main:
@@ -156,7 +156,7 @@ app.use('/user', router);
 
 ------
 
-## Rout params
+## Route params
 
 ```ts
 app.get('/user/:company/:id', (req, res) => {
@@ -214,7 +214,6 @@ app.get('/example/b', function (req, res, next) {
 - Create an express server
 - Add routes for RESTful management of "item"
   - use "Inmemmory" storage
-
 
 -------
 
