@@ -209,7 +209,7 @@ app.get('/example/b', function (req, res, next) {
 
 ------
 
-## Excersise 1
+## Exercise 1
 
 - Create an express server
 - Add routes for RESTful management of "item"
@@ -217,14 +217,14 @@ app.get('/example/b', function (req, res, next) {
 
 -------
 
-## Excersise 2
+## Exercise 2
 
 - Seperate the service to different files:
   - `index.ts`, `controller.ts` and `service.ts`
 
 -------
 
-## Excersise 3
+## Exercise 3
 
 - Replace the "Inmemmory" storage with mongodb
   - make sure to pass the `monogo uri` as an environmnet variable
@@ -281,7 +281,7 @@ for further reading see [Docker and Node.js Best Practices](https://github.com/n
 
 ------
 
-## Excersise 4
+## Exercise 4
 
 - Add your service to a docker-compose with the mongodb
 
