@@ -18,98 +18,97 @@ $ [sudo] npm i -g n
 
 $ n latest
 $ node --version
-v14.14.0
+v14.16.0
 
 $ npm --version
-6.14.8
+6.14.11
 ```
 
 ----------
 
-## Package Management
+# Node Core Libraries
 
-```sh
-npm init
-```
+* Globals
+* Events
+* FS
+* HTTP
 
----------
+----------
 
-## Package.json
-
-```json
-{
-  "name": "package name",
-  "description": "Package description",
-  "version": "2.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },  
-  "dependencies": {
-    "npm-name": "major.minor.patch"
-  },
-  "devDependencies": {
-    "@types/node": "^14.11.10",
-  },
-  "author": "John Snow <johnsnow@winterfell.com>",
-  "keywords": [],
-  "license": "MIT"
-}
-```
-
---------
-
-## Ex1: Create prime numbers file
-
-Lets wrte a script that writes prime numbers between 2 and 100 to a file node's `fs` library
-
---------
-
-## Passing input to scripts
-
-```ts
-console.log(process.argv)
-```
-
-Change the script to accept minimum and maximum numbers
-
---------
-
-## Glob Variables
+## Globals
 
 - `__dirname`
 - `__filename`
 - `process`
-- `require`
 - `setTimout`, `setInterval`
 - `setImmediate`
+- `exports`
+- `require`
 - `global`
-  
-------
 
-## EventEmitter
+----------
+## Events 
 
-```javascript
+The base of Node's asyn core is based on events
+
+```js
+const EventEmitter = require('events');
+
+class MyEmitter extends EventEmitter {}
+
 const myEmitter = new MyEmitter();
-// Only do this once so we don't loop forever
-myEmitter.once('newListener', (event, listener) => {
-  if (event === 'event') {
-    // Insert a new listener in front
-    myEmitter.on('event', () => {
-      console.log('B');
-    });
-  }
+
+myEmitter.on('event', function(payload) => {
+  console.log('an event occurred!', payload);
 });
-myEmitter.on('event', () => {
-  console.log('A');
-});
-myEmitter.emit('event');
-// Prints:
-//   B
-//   A
+
+setInterval(() => myEmitter.emit('event'), 1000)
+
 ```
-------
+-------
+
+## Event Emitter
+
+Write an observable object that notifies registered function when the object is changed
+
+-------
+## File System (FS)
+
+FS operations with both syncronous and asyncronous APIs
+
+Provide all basic capabilities such as:
+
+- create a directory
+- write/read files
+- rename
+- link
+- append
+
+--------
+# Getting to know the FS library
+
+## mkdir
+
+Create a directory called 'books'. make sure that:
+
+1. The directory is created where you want it
+2. The operation doesn't fail when re-running the script
+
+
+## writeFile
+
+write `this is my book` into a file called `book1.md` inside `books` directory
+ 
+## readFile
+read the content of `book1.md` and print it
+
+## appendFile
+append a new line to the `book1.md` file
+
+## rm
+Delete the directory (and file)
+
+--------
 
 ## HTTP
 
@@ -170,38 +169,63 @@ req.end();
 
 -------
 
-## Net
-
-```js
-const server = net.createServer((socket) => {
-  socket.end('goodbye\n');
-}).on('error', (err) => {
-  // Handle errors here.
-  throw err;
-});
-
-// Grab an arbitrary unused port.
-server.listen(() => {
-  console.log('opened server on', server.address());
-});
-```
-
--------
-
 ## Exercise
 
 1. Create a restful HTTP server for the resource `user`
 1. Create a client to test the endpoints
 
--------
+--------
+
+# Working with Dependencies
+
+--------
+
+## Package Management
+
+```sh
+npm init
+```
+
+--------
+
+## Package.json
+
+```json
+{
+  "name": "package name",
+  "description": "Package description",
+  "version": "2.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },  
+  "dependencies": {
+    "npm-name": "major.minor.patch"
+  },
+  "author": "John Snow <johnsnow@winterfell.com>",
+  "keywords": [],
+  "license": "MIT"
+}
+```
+
+--------
+
+## Passing input to scripts
+
+```ts
+console.log(process.argv)
+```
+  
+--------
 
 # Working with NPM Modules
 
 [https://www.npmjs.com/](https://www.npmjs.com/)
 
--------
+--------
 
-## Common packages
+## Common packages most projects use
 
 - `lodash` - Javascript utility library
 - `axios` - http client
@@ -210,7 +234,7 @@ server.listen(() => {
 - `dotenv` - loads variables from `.env` files
 - `config` - configurations manager
 
--------
+--------
 
 ## Exercise
 
