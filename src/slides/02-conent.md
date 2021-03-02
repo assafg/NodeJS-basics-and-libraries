@@ -7,8 +7,15 @@
 
 --------
 
+## The event loop
+
+![Event loop](./event-loop.jpg)
+
+----
+
 ## Getting Started
 
+----
 ### Latest Version alignment
 
 ```sh
